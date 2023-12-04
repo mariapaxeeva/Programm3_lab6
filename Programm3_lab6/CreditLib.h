@@ -125,13 +125,14 @@ public:
 class Borrower
 {
 private:
-	string name;
 	int age;
+	char criminal;
+public:
+	string name;
 	int profit;
 	History historyBorrower;
-	char criminal;
 	Guarantor guarantorBorrower;
-public:
+
 	void OutBorrower();
 	int CheckProbabilityApproval();
 
@@ -299,5 +300,64 @@ public:
 	}
 	void SetCurrency(string cur) {
 		currency = cur;
+	}
+};
+
+class LegalPerson: public Borrower
+{
+private:
+	int inn;
+	int ogrn;
+	string placeBusiness;
+
+public:
+	LegalPerson()
+	{
+		this->inn = 0;
+		this->ogrn = 0;
+		this->placeBusiness = "none";
+	};
+
+	LegalPerson(string nameValue,
+		int profitValue,
+		int repay,
+		int debtValue,
+		string nameGuarant,
+		int profitGuarant,
+		int inn,
+		int ogrn,
+		string placeBusiness)
+	{
+		this->name = nameValue;
+		this->profit = profitValue;
+		this->historyBorrower = History(repay, debtValue);
+		this->guarantorBorrower = Guarantor(nameGuarant, profitGuarant);
+		this->inn = inn;
+		this->ogrn = ogrn;
+		this->placeBusiness = placeBusiness;
+	};
+
+	string GetPlaceBusiness() {
+		return placeBusiness;
+	}
+
+	int GetINN() {
+		return inn;
+	}
+
+	int GetOGRN() {
+		return ogrn;
+	}
+
+	void SetPlaceBusiness(string placeNew) {
+		placeBusiness = placeNew;
+	}
+
+	void SetINN(int innNew) {
+		inn = innNew;
+	}
+
+	void SetOGRN(int ogrnNew) {
+		ogrn = ogrnNew;
 	}
 };

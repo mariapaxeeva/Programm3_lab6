@@ -24,7 +24,7 @@ int main()
     cout << "\n" << ++test << ") Тест конструктора без параметров" << endl;
     credit0.OutData();
 
-    Credit creditTest(123, "банк", "Сбербанк", "Иванов И. И.", 30, 20000, 0, 1000, '-', "Петров П. П.", 45000, 100000, 4.8, 10, "рубль");
+ /*   Credit creditTest(123, "банк", "Сбербанк", "Иванов И. И.", 30, 20000, 0, 1000, '-', "Петров П. П.", 45000, 100000, 4.8, 10, "рубль");
     cout << "\n" << ++test << ") Тест конструктора со всеми параметрами" << endl;
     creditTest.OutData();
 
@@ -67,7 +67,11 @@ int main()
     Credit* TwoData[2][2]{ new Credit(207), new Credit(1890), new Credit(43), new Credit(345) };
     for (int i = 0; i < 2; i++)
         for (int j = 0; j < 2; j++)
-            cout << TwoData[i][j]->GetNumber() << endl;
+            cout << TwoData[i][j]->GetNumber() << endl;*/
+
+    cout << "\n" << ++test << ") Производный класс " << endl;
+    LegalPerson urFace("банк", 10000, 5, 190000, "Иванов И. И.", 300000, 19403490, 34959484, "Пакистан");
+    cout << urFace.GetDebt() << endl;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
