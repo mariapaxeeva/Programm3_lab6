@@ -308,3 +308,18 @@ void LegalPerson::OutBorrower()
 	cout << "ФИО поручителя:                    " + this->guarantorBorrower.GetNameGuarantor() << endl;
 	cout << "Доход поручителя:                  " << this->guarantorBorrower.GetProfitGuarantor() << endl;
 }
+
+LegalPerson& LegalPerson::operator=(const Borrower& other)
+{
+	if (this == &other)
+		return *this;
+	LegalPerson temp(other);
+	this->name = temp.name;
+	this->profit = temp.profit;
+	this->inn = temp.GetAge();
+	this->ogrn = temp.GetAge();
+	this->guarantorBorrower = temp.guarantorBorrower;
+	this->historyBorrower = temp.historyBorrower;
+	return *this;
+}
+

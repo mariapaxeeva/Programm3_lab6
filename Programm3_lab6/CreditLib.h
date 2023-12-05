@@ -195,6 +195,14 @@ public:
 		return guarantorBorrower.GetProfitGuarantor();
 	}
 
+	History GetHistory() {
+		return historyBorrower;
+	}
+
+	Guarantor GetGuarantor() {
+		return guarantorBorrower;
+	}
+
 	void SetName(string nameNew) {
 		name = nameNew;
 	}
@@ -209,6 +217,10 @@ public:
 
 	void SetCriminal(const char criminalNew) {
 		criminal = criminalNew;
+	}
+
+	void SetHistory(History newHistory) {
+		historyBorrower = newHistory;
 	}
 };
 
@@ -321,6 +333,17 @@ public:
 		this->placeBusiness = "none";
 	};
 
+	LegalPerson(Borrower b)
+	{
+		this->name = b.GetName();
+		this->profit = b.GetProfit();
+		this->historyBorrower = b.GetHistory();
+		this->guarantorBorrower = b.GetGuarantor();
+		this->inn = 0;
+		this->ogrn = 0;
+		this->placeBusiness = "none";
+	};
+
 	LegalPerson(string nameValue,
 		int profitValue,
 		int repay,
@@ -329,7 +352,7 @@ public:
 		int profitGuarant,
 		int inn,
 		int ogrn,
-		string placeBusiness)
+		string placeBusiness):Borrower()
 	{
 		this->name = nameValue;
 		this->profit = profitValue;
@@ -339,6 +362,8 @@ public:
 		this->ogrn = ogrn;
 		this->placeBusiness = placeBusiness;
 	};
+
+	LegalPerson& operator=(const Borrower& other);
 
 	string GetPlaceBusiness() {
 		return placeBusiness;
