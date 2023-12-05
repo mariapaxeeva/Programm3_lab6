@@ -127,12 +127,14 @@ class Borrower
 private:
 	int age;
 	char criminal;
-public:
+
+protected:
 	string name;
 	int profit;
 	History historyBorrower;
 	Guarantor guarantorBorrower;
 
+public:
 	void OutBorrower();
 	int CheckProbabilityApproval();
 
@@ -311,6 +313,7 @@ private:
 	string placeBusiness;
 
 public:
+	void OutBorrower();
 	LegalPerson()
 	{
 		this->inn = 0;

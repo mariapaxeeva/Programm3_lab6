@@ -295,3 +295,16 @@ void SearchNum(int* index, Credit* data, int sizeData)
 		*index = -1;
 	}
 }
+
+void LegalPerson::OutBorrower()
+{
+	cout << "Название организации-заёмщика:     " + this->name << endl;
+	cout << "Место ведения бизнеса:             " + this->placeBusiness << endl;
+	cout << "ИНН :                              " << this->inn << endl;
+	cout << "ОГРН:                              " << this-> ogrn<< endl;
+	cout << "Доход организации:                 " << this->profit << endl;
+	cout << "Количество погашенных кредитов     " << this->historyBorrower.GetRepayLoan() << endl;
+	cout << "Сумма задолженности:               " << this->historyBorrower.GetDebt() << endl;
+	cout << "ФИО поручителя:                    " + this->guarantorBorrower.GetNameGuarantor() << endl;
+	cout << "Доход поручителя:                  " << this->guarantorBorrower.GetProfitGuarantor() << endl;
+}
