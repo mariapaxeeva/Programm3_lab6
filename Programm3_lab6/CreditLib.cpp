@@ -309,6 +309,27 @@ void LegalPerson::OutBorrower()
 	cout << "Доход поручителя:                  " << this->guarantorBorrower.GetProfitGuarantor() << endl;
 }
 
+int LegalPerson::CheckProbabilityApproval()
+{
+	bool conditionProfit = true;
+	bool conditionHistory = true;
+	if (this->GetProfit() < 150000)
+		conditionProfit = false;
+	if (this->historyBorrower.GetRepayLoan() < 2 && this->historyBorrower.GetDebt() > this->GetProfit() * 3)
+		conditionHistory = false;
+	cout << "\nЗаёмщик: " << this->GetName() << endl;
+	if (conditionProfit && conditionHistory)
+	{
+		cout << "Вероятность одобрения кредита высока!" << endl;
+		return 0;
+	}
+	else
+	{
+		cout << "К сожалению, кредит вряд ли будет одобрен." << endl;
+		return -1;
+	}
+}
+
 LegalPerson& LegalPerson::operator=(const Borrower& other)
 {
 	if (this == &other)

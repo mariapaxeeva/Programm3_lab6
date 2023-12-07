@@ -136,7 +136,7 @@ protected:
 
 public:
 	void OutBorrower();
-	int CheckProbabilityApproval();
+	virtual int CheckProbabilityApproval();
 
 	Borrower()
 	{
@@ -326,6 +326,8 @@ private:
 
 public:
 	void OutBorrower();
+	int CheckProbabilityApproval() override;
+
 	LegalPerson()
 	{
 		this->inn = 0;
