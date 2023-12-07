@@ -122,7 +122,13 @@ public:
 	}
 };
 
-class Borrower
+class AbstractBorrower
+{
+public:
+	virtual int CheckProbabilityApproval() = 0;
+};
+
+class Borrower: public AbstractBorrower
 {
 private:
 	int age;
@@ -136,7 +142,7 @@ protected:
 
 public:
 	void OutBorrower();
-	virtual int CheckProbabilityApproval();
+	int CheckProbabilityApproval() override;
 
 	Borrower()
 	{
