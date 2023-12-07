@@ -1,6 +1,7 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -395,5 +396,71 @@ public:
 
 	void SetOGRN(int ogrnNew) {
 		ogrn = ogrnNew;
+	}
+};
+
+// Шаблон класса для перевода денег по реквизитам (номеру телефона, ФИО или номеру счета)
+template <typename Type>
+class TransferMoney
+{
+private:
+	Type senderDetails;
+	Type recipientDetails;
+	int amount;
+public:
+	TransferMoney()
+	{
+		senderDetails = "+7()- - -";
+		recipientDetails = "+7()- - -";
+		amount = 0;
+	}
+	TransferMoney(Type sender, Type recipient, int summa)
+	{
+		senderDetails = sender;
+		recipientDetails = recipient;
+		amount = summa;
+	}
+	TransferMoney<Type> Transfer()
+	{
+		string answer;
+		cout << "Введите свои реквизиты (номер счета, ФИО или номер телефона):" << endl;
+		cin >> senderDetails;
+		cout << "Введите реквизиты получателя (номер счета, ФИО или номер телефона):" << endl;
+		cin >> recipientDetails;
+		cout << "Введите сумму: " << endl;
+		cin >> amount;
+		cout << "Подтвердить перевод " << senderDetails << " -> " << recipientDetails << " на сумму " << amount << " рублей?" << endl;
+		cin >> answer;
+		if (answer == "yes")
+			cout << "Операция прошла успешно!" << endl;
+		else if (answer == "no")
+			cout << "Операция отменена." << endl;
+		else
+			cout << "Операция отклонена." << endl;
+		return *this;
+	}
+	Type GetSenderDetails()
+	{
+		return senderDetails;
+	}
+	Type GetRecipientDetails()
+	{
+		return recipientDetails;
+	}
+	int GetAmount()
+	{
+		return amount;
+	}
+	void SetSenderDetails(Type newValue)
+	{
+		senderDetails = newValue;
+	}
+	void SetRecipientDetails(Type newValue)
+	{
+		recipientDetails = newValue;
+	}
+	void SetAmount(int newValue)
+	{
+		amount = newValue;
 	}
 };

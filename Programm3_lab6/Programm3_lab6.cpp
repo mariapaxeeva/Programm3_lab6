@@ -20,7 +20,7 @@ int main()
 
     int test = 0;
 
-    /*Credit credit0;
+    Credit credit0;
     cout << "\n" << ++test << ") Тест конструктора без параметров" << endl;
     credit0.OutData();
 
@@ -67,7 +67,7 @@ int main()
     Credit* TwoData[2][2]{ new Credit(207), new Credit(1890), new Credit(43), new Credit(345) };
     for (int i = 0; i < 2; i++)
         for (int j = 0; j < 2; j++)
-            cout << TwoData[i][j]->GetNumber() << endl;*/
+            cout << TwoData[i][j]->GetNumber() << endl;
 
     cout << "\n" << ++test << ") Производный класс (+ модификатор protected предоставляет доступ производному классу,\n\
    но запрещает использование сторонними функциями) " << endl;
@@ -77,20 +77,27 @@ int main()
     cout << "\n" << ++test << ") Перегрузка метода (без вызова метода базового класса)" << endl;
     urFace.OutBorrower();
 
-    cout << "\n" << ++test << ")  Перегрузка метода (с вызовом метода базового класса)" << endl;
+    cout << "\n" << ++test << ") Перегрузка метода (с вызовом метода базового класса)" << endl;
     urFace.Borrower::OutBorrower();
 
-    cout << "\n" << ++test << ")  Перегрузка оператора присваивания" << endl;
+    cout << "\n" << ++test << ") Перегрузка оператора присваивания" << endl;
     Borrower fizFace("Название", 15, 20000, 10, 0, '-', "Гарант Г. Г.", 20000);
     urFace = fizFace;
     urFace.OutBorrower();
 
-    cout << "\n" << ++test << ")  Виртуальная функция CheckProbabilityApproval" << endl;
-    Borrower* borrowerTest = new Borrower("БыстроДеньги", 15, 150000, 5, 10000, '-', "Гарант Г. Г.", 1200);
+    cout << "\n" << ++test << ") Виртуальная функция CheckProbabilityApproval" << endl;
+    Borrower *borrowerTestVF = new Borrower("БыстроДеньги", 15, 150000, 5, 10000, '-', "Гарант Г. Г.", 1200);
     LegalPerson legalTest;
-    legalTest = *borrowerTest;
-    borrowerTest->CheckProbabilityApproval();
+    legalTest = *borrowerTestVF;
+    borrowerTestVF->CheckProbabilityApproval();
     legalTest.CheckProbabilityApproval();
+
+    cout << "\n" << ++test << ") Шаблон класса TransferMoney" << endl;
+    TransferMoney<int> accTransfer(102030400, 123405030, 4500);
+    accTransfer.Transfer();
+    TransferMoney<string> nameTransfer;
+    nameTransfer;
+    
     
 }
 
