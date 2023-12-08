@@ -66,5 +66,23 @@ public class Main{
         String literal1 = "literal";
         String literal2 = new String("literal").intern();
         System.out.println(literal1.equals(literal2));
+
+        System.out.println("\n" + ++test + ") Производный класс (+ модификатор protected предоставляет доступ производному классу,\n" +
+                "   но запрещает использование сторонними функциями)");
+
+        LegalPerson urFace = new LegalPerson("банк", 10000, 5, 190000, "Иванов И. И.", 300000, 19403490, 34959484, "Пакистан");
+        System.out.println(urFace.GetDebt());
+
+        System.out.println("\n" + ++test + ") Перегрузка метода (без вызова метода базового класса)");
+        urFace.OutBorrower(1);
+
+        System.out.println("\n" + ++test + ")  Перегрузка метода (с вызовом метода базового класса)");
+        ((Borrower) urFace).OutBorrower();
+
+        System.out.println("\n" + ++test + ") Шаблон класса TransferMoney");
+        TransferMoney<Integer> accTransfer = new TransferMoney<>(102030400, 123405030, 4500);
+        accTransfer.Transfer();
+        TransferMoney<String> nameTransfer = new TransferMoney<>();
+        nameTransfer.Transfer();
     }
 }

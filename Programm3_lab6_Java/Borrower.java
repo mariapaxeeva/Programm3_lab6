@@ -1,11 +1,33 @@
 import java.util.Scanner;
-public class Borrower {
-    String name;
-    int age;
-	int profit;
-	History historyBorrower;
-	char criminal;
-	Guarantor guarantorBorrower;
+abstract class AbstractBorrower {
+    public abstract int CheckProbabilityApproval();
+}
+
+class Borrower extends AbstractBorrower {
+    private int age;
+    private char criminal;
+    protected String name;
+    private int profit;
+    private History historyBorrower;
+    private Guarantor guarantorBorrower;
+
+    public Borrower() {
+        this.name = "none";
+        this.historyBorrower = new History();
+        this.guarantorBorrower = new Guarantor();
+        this.age = 0;
+        this.profit = 0;
+        this.criminal = '-';
+    }
+
+    public Borrower(String nameValue, int ageValue, int profitValue, int repay, int debtValue, char criminalValue, String nameGuarant, int profitGuarant) {
+        historyBorrower = new History(repay, debtValue);
+        guarantorBorrower = new Guarantor(nameGuarant, profitGuarant);
+        name = nameValue;
+        age = ageValue;
+        profit = profitValue;
+        criminal = criminalValue;
+    }
 
     public String ProtectInputString()
     {
@@ -106,34 +128,6 @@ public class Borrower {
         }
     }
 
-	public Borrower()
-	{
-		this.name = "none";
-		this.age = 0;
-		this.profit = 0;
-        this.historyBorrower = new History();
-		this.criminal = '-';
-        this.guarantorBorrower = new Guarantor();
-	}
-
-	public Borrower(
-		String name,
-		int age,
-		int profit,
-		int repay,
-		int debt,
-		char criminal,
-		String nameGuarant,
-		int profitGuarant)
-	{
-		this.historyBorrower = new History(repay, debt);
-		this.guarantorBorrower = new Guarantor(nameGuarant, profitGuarant);
-		this.name = name;
-		this.age = age;
-		this.profit = profit;
-		this.criminal = criminal;
-	}
-
 	public String GetName() {
 		return name;
 	}
@@ -147,11 +141,11 @@ public class Borrower {
 	}
 
 	public int GetRepayLoan() {
-		return historyBorrower.GetRepayLoan();
+		return historyBorrower.repayLoan;
 	}
 
 	public int GetDebt() {
-		return historyBorrower.GetDebt();
+		return historyBorrower.debt;
 	}
 
 	public char GetCriminal() {
@@ -159,12 +153,20 @@ public class Borrower {
 	}
 
 	public String GetNameGuarantor() {
-		return guarantorBorrower.GetNameGuarantor();
+		return guarantorBorrower.nameGuarantor;
 	}
 
 	public int GetProfitGuarantor() {
-		return guarantorBorrower.GetProfitGuarantor();
+		return guarantorBorrower.profitGuarantor;
 	}
+
+    public History GetHistory() {
+        return History;
+    }
+
+    public Guarantor GetGuarantor() {
+        return Guarantor;
+    }
 
 	public void SetName(String name) {
 		name = name;
@@ -181,4 +183,12 @@ public class Borrower {
 	public void SetCriminal(char criminal) {
 		criminal = criminal;
 	}
+
+    public void SetHistory(History hist) {
+        historyBorrower = hist;
+    }
+
+    public void SetGuarantor(Guarantor guar) {
+        guarantorBorrower = guar;
+    }
 };
