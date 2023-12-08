@@ -1,4 +1,6 @@
-public class Lender {
+import java.util.HashMap;
+
+public class Lender implements Cloneable{
     private String typeLender;
     private String title;
 
@@ -15,6 +17,14 @@ public class Lender {
     public Lender(String type, String titleValue) {
         this.typeLender = type;
         this.title = titleValue;
+    }
+
+    public Object clone(){  
+        try{  
+            return super.clone();  
+        }catch(Exception e){ 
+            return null; 
+        }
     }
 
     public String GetTypeLender() {
